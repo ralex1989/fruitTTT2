@@ -11,6 +11,7 @@ function initialize() {
    whoseTurn = player,
    lastTurn = whoseTurn,   
    difficulty = 1,
+   gameMode = 2,
    gameOver = false,  
    score = {
       computer: 0,
@@ -50,21 +51,43 @@ function cellClicked( id ) {
    let idName = id.toString();
    let cell = parseInt( idName[ idName.length - 1 ] );
 
-   if ( myGrid.cells[ cell ] > 0 || whoseTurn !== player || gameOver ) {
-      return false;
-   }
    moves++;
-   document.getElementById( id ).setAttribute( "src", playerImg );
-   document.getElementById( id ).style.cursor = "default";
 
-   myGrid.cells[ cell ] = player;
+   if ( gameMode === 1 ) {
+      if ( myGrid.cells[ cell ] > 0 || whoseTurn !== player || gameOver ) {
+         return false;
+      }
+      
+      document.getElementById( id ).setAttribute( "src", playerImg );
+      document.getElementById( id ).style.cursor = "default";
+   
+      myGrid.cells[ cell ] = player;
+   } else if ( gameMode === 2 ) {
+      if ( moves % 2 === 1 ) {
+         document.getElementById( id ).setAttribute( "src", playerImg );
+         document.getElementById( id ).style.cursor = "default";
+      
+         myGrid.cells[ cell ] = player;
+      } else if ( moves % 2 === 0 ) {
+         document.getElementById( id ).setAttribute( "src", computerImg );
+         document.getElementById( id ).style.cursor = "default";
+      
+         myGrid.cells[ cell ] = computer;
+      }
+   }
 
    if ( moves >= 5 ) {
       winner = checkWin();
    }
    if ( winner === 0 ) {
-      whoseTurn = computer;
-      botMove();
+      if ( gameMode === 1 ) {
+         whoseTurn = computer;
+         botMove();
+      }
+      else if ( gameMode === 2 ) {
+         whoseTurn = computer;  
+         //showCompImg( cell );
+      }
    }
 
    return true;
@@ -105,6 +128,17 @@ function showOptions() {
 }
 
 function getOptions() {
+   if ( document.getElementById( "wC" ).checked === true ) {
+      gameMode = 1;
+      document.getElementById( "gamerName1" ).innerText = "Компьютер";
+      document.getElementById( "gamerName2" ).innerText = "Игрок";
+   }
+   else {
+      gameMode = 2;
+      document.getElementById( "gamerName1" ).innerText = "Игрок1";
+      document.getElementById( "gamerName2" ).innerText = "Игрок2";
+   }
+
    if ( document.getElementById( "ea" ).checked === true ) {
       difficulty = 0;
    }
@@ -140,7 +174,7 @@ function getOptions() {
          setTimeout( botMove, 200 );
       }   
    }
-   document.getElementById( "optionsDlg" ).style.display = "none";
+   document.getElementById( "optionsDlg" ).style.display = "none";   
 }
 
 function closeModal( id ) {
@@ -345,10 +379,22 @@ function intRandom( min, max ) {
 }
 
 function endGame( who ) {
-   if ( who == player ) {      
-      announceWinner( "Вы выиграли!", true );
-   } else if ( who == computer ) {      
-      announceWinner( "Выиграл компьютер!", false );
+   if ( who == player ) {     
+      if ( gameMode === 1 ) {
+         announceWinner( "Вы выиграли!", true );
+      } else if ( gameMode === 2 && player == strawBerries ) {
+         announceWinner( "Выиграли клубники!", true );
+      } else if ( gameMode === 2 && player == waterMelons ) {
+         announceWinner( "Выиграли арбузы!", true );
+      }
+   } else if ( who == computer ) {  
+      if ( gameMode === 1 ) {
+         announceWinner( "Выиграл компьютер!", false );   
+      } else if ( gameMode === 2 && computer == strawBerries ) {
+         announceWinner( "Выиграли клубники!", true );
+      } else if ( gameMode === 2 && computer == waterMelons ) {
+         announceWinner( "Выиграли арбузы!", true );
+      }
    } else {      
       announceWinner( "Ничья!", false );
    }
@@ -363,8 +409,13 @@ function endGame( who ) {
 }
 
 function announceWinner( text, isGif ) {
+   let randNum = intRandom( 1, 3 );
    if ( isGif === true ) {
-      document.getElementById( "winnerGif" ).setAttribute( "src", "winner_gif.gif" );
+      if ( randNum === 1 ) {
+         document.getElementById( "winnerGif" ).setAttribute( "src", "winner_gif1.gif" );
+      } else if ( randNum === 2 ) {
+         document.getElementById( "winnerGif" ).setAttribute( "src", "winner_gif2.gif" );
+      }
    }
    else {
       document.getElementById( "winnerGif" ).setAttribute( "src", "" );
