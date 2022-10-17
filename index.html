@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+      <meta charset="utf-8">
+      <title>TicTacToe</title>
+      <link href = "style.css" rel = "stylesheet" type = "text/css">      
+   </head>
+   <body onload="initialize()">
+      <div id = "wrapper">
+         <div class="sudoku-game" style="width: 307px; height: 307px">
+            <input id="cell0" onclick="cellClicked(this.id)" class="sudoku-segment" type="image" src="nologo.png">
+            <input id="cell1" onclick="cellClicked(this.id)" class="sudoku-segment" type="image" src="nologo.png">
+            <input id="cell2" onclick="cellClicked(this.id)" class="sudoku-segment" type="image" src="nologo.png">
+            <input id="cell3" onclick="cellClicked(this.id)" class="sudoku-segment" type="image" src="nologo.png">
+            <input id="cell4" onclick="cellClicked(this.id)" class="sudoku-segment" type="image" src="nologo.png">
+            <input id="cell5" onclick="cellClicked(this.id)" class="sudoku-segment" type="image" src="nologo.png">
+            <input id="cell6" onclick="cellClicked(this.id)" class="sudoku-segment" type="image" src="nologo.png">
+            <input id="cell7" onclick="cellClicked(this.id)" class="sudoku-segment" type="image" src="nologo.png">
+            <input id="cell8" onclick="cellClicked(this.id)" class="sudoku-segment" type="image" src="nologo.png">
+            <div class="button-container">
+               <div class="restart" onclick="restartGame( true )"><button class="custom-btn btn-3"><span>НАСТРОЙКИ</span></button></div>
+               <div class="restart"><button class="custom-btn btn-3" id="newGameBtn" onclick="reload()"><span>НАЧАТЬ ЗАНОВО!</span></button></div>
+            </div>  
+         </div>   
+         <table>
+            <tr><th class="th_list">Компьютер</th><th class="th_list" style="padding: 0 20px;">Ничья</th><th class="th_list">Игрок</th></tr>
+            <tr><td class="td_list" id="computer_score">0</td><td class="td_list" id="draw_score">0</td><td class="td_list" id="player_score">0</td></tr>
+         </table>
+         <div id="optionsDlg" class="modal">
+            <div class="modal-content">
+               <h2>Выберите настройки игры.<h2>
+
+                  <h3>Сложность:</h3>
+                  <label>
+                     <input type="radio" name="difficulty" id="ea" value="easy">Лёгкий                     
+                  </label>
+                  <label>
+                     <input type="radio" name="difficulty" id="ha" value="hard" checked>Сложный                     
+                  </label>
+
+                  <h3>Кто ходит первым?</h3>
+                  <label>
+                     <input type="radio" name="firstMove" id="pl" value="player" checked>Игрок                     
+                  </label>
+                  <label>
+                     <input type="radio" name="firstMove" id="comp" value="computer">Компьютер                     
+                  </label>
+                  <h3>Играть как:</h3>
+                  <label>
+                     <input type="radio" style="display: none;" name="player" id="sb" value="strawBerries" checked>
+                     <img class="lb" id="sb1" src="sblogo.png" alt="strawberries" width="50px" tabindex="0">
+                  </label>
+                  <label>
+                     <input type="radio" style="display: none;" name="player" id="wm" value="waterMelons">
+                     <img class="lb" id="wm1" src="wmlogo.png" alt="watermelons" width="50px" tabindex="1">
+                  </label>                  
+                  <p><button class="custom-btn btn-3" id="okBtn" onclick="getOptions()"><span>ИГРАТЬ!</span></button></p>                  
+            </div>
+         </div>
+         <div id="winAnnounce" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">              
+              <p id="winText"></p><br>
+              <img id="winnerGif" width="250px">           
+            </div>            
+         </div>
+      </div>
+      <script src = "script.js"></script>
+   </body>
+</html>
