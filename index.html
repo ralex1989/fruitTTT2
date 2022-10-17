@@ -3,7 +3,14 @@
    <head>
       <meta charset="utf-8">
       <title>TicTacToe</title>
-      <link href = "style.css" rel = "stylesheet" type = "text/css">      
+      <link href = "style.css" rel = "stylesheet" type = "text/css">   
+            <script language="javascript">VK.init({ apiId: 5087365 });
+      bridge.send("VKWebAppCheckNativeAds", {"ad_format": "interstitial"});
+
+bridge.send("VKWebAppShowNativeAds", {ad_format:"interstitial"})
+.then(data => console.log(data.result))
+.catch(error => console.log(error));
+      </script>
    </head>
    <body onload="initialize()">
       <div id = "wrapper">
