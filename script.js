@@ -432,7 +432,7 @@ function showAddToMenu() {
 
 function addToMenu() {
    VK.callMethod("showSettingsBox", 256);
-   document.getElementById( "addToMenu" ).style.display = "block"; 
+   document.getElementById( "addToMenu" ).style.display = "none"; 
 }
 
 function vkAds() {
