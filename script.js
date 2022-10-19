@@ -422,7 +422,7 @@ function endGame( who ) {
       setTimeout( showAddToMenu, 1100 );
    }
    if ( ( score.computer + score.draw + score.player ) % 2 === 1 ) {
-      vkAds();   
+      setTimeout( vkAds, 200 );   
    }   
 }
 
