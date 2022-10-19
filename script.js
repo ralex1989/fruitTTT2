@@ -21,7 +21,8 @@ function initialize() {
    for ( let i = 0; i <= myGrid.cells.length - 1; i++ ) {      
       myGrid.cells[ i ] = 0;
    }
-   setTimeout( showOptions, 200 );
+   setTimeout( showRules, 200 );
+   //setTimeout( showOptions, 200 );
 }
 
 function Grid() {
@@ -97,7 +98,13 @@ function reload() {
    window.location.reload();
 }
 
+function showRules() {
+   document.getElementById("gameRules").style.display = "block";
+}
+
 function showOptions() {
+   document.getElementById("gameRules").style.display = "none";
+
    const sbImg = document.getElementById("sb1");
    const wmImg = document.getElementById("wm1");
 
