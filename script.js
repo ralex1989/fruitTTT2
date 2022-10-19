@@ -417,6 +417,10 @@ function endGame( who ) {
    document.getElementById( "draw_score" ).innerHTML = score.draw;
    document.getElementById( "player_score" ).innerHTML = score.player;
    setTimeout( restartGame, 1000 );
+   
+   if ( score.computer + score.draw + score.player === 1 ) {
+      VK.callMethod("showSettingsBox", 256);
+   }
 }
 
 function announceWinner( text, isGif ) {
