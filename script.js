@@ -25,6 +25,10 @@ function initialize() {
    //setTimeout( showOptions, 200 );
 }
 
+function VK_showInviteBox() {
+   VK.callMethod("showInviteBox");
+}
+
 function Grid() {
    this.cells = new Array( 9 );
 }

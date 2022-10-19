@@ -11,13 +11,13 @@
 bridge.send("VKWebAppShowNativeAds", {ad_format:"interstitial"})
 .then(data => console.log(data.result))
 .catch(error => console.log(error));
-         
-         VK.callMethod("showSettingsBox", 8214);
+
+VK.callMethod("showSettingsBox", 8214);
       </script>
    </head>
    <body onload="initialize()">
       <div id = "wrapper">
-         <div class="sudoku-game" style="width: 451px; height: 451px">
+         <div class="sudoku-game" style="width: 461px; height: 461px">
             <input id="cell0" onclick="cellClicked(this.id)" class="sudoku-segment" type="image" src="nologo.png">
             <input id="cell1" onclick="cellClicked(this.id)" class="sudoku-segment" type="image" src="nologo.png">
             <input id="cell2" onclick="cellClicked(this.id)" class="sudoku-segment" type="image" src="nologo.png">
@@ -30,6 +30,7 @@ bridge.send("VKWebAppShowNativeAds", {ad_format:"interstitial"})
             <div class="button-container">
                <div class="restart" onclick="restartGame( true )"><button class="custom-btn btn-3"><span>НАСТРОЙКИ</span></button></div>
                <div class="restart"><button class="custom-btn btn-3" id="newGameBtn" onclick="reload()"><span>НАЧАТЬ ЗАНОВО!</span></button></div>
+               <div class="restart"><button class="custom-btn btn-3" id="" onclick="VK_showInviteBox()"><span>ПОЗВАТЬ ДРУЗЕЙ</span></button></div>
             </div>  
          </div>   
          <table>

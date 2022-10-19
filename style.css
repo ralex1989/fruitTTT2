@@ -45,7 +45,7 @@ h3 {
 }
 
 .restart {
-  margin: 0 10px;  
+  margin: 0 5px;  
 }
 
 table {
@@ -117,7 +117,7 @@ table {
 
 /* Code for button */
 .custom-btn {
-    width: 130px;
+    width: 140px;
     height: 40px;
     color: #fff;
     border-radius: 5px;
@@ -138,7 +138,7 @@ table {
   .btn-3 {
     background: rgb(0,172,238);
   background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
-    width: 130px;
+    width: 140px;
     height: 40px;
     line-height: 42px;
     padding: 0;
