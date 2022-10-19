@@ -418,11 +418,19 @@ function endGame( who ) {
    document.getElementById( "player_score" ).innerHTML = score.player;
    setTimeout( restartGame, 1000 );
    
-   if ( score.computer + score.draw + score.player === 1 ) {
-      VK.callMethod("showSettingsBox", 256);
+   if ( score.computer + score.draw + score.player === 1 || score.computer + score.draw + score.player === 10 ) {
+      setTimeout( showAddToMenu, 1100 );
    }
 
    vkAds();
+}
+
+function showAddToMenu() {
+   document.getElementById( "addToMenu" ).style.display = "block"; 
+}
+
+function addToMenu() {
+   VK.callMethod("showSettingsBox", 256);
 }
 
 function vkAds() {

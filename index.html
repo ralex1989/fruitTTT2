@@ -7,15 +7,8 @@
       <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
       <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
       <script language="javascript">
-         VK.init({ apiId: 5087365 });
-        // vkBridge.send('VKWebAppInit');
+         VK.init({ apiId: 5087365 });        
          vkBridge.send("VKWebAppInit", {});
-
-/*          vkBridge.send("VKWebAppCheckNativeAds", {"ad_format": "interstitial"});
-         vkBridge.send("VKWebAppShowNativeAds", {ad_format:"interstitial"})
-
-         .then(data => console.log(data.result))
-         .catch(error => console.log(error)); */
       </script>
    </head>
    <body onload="initialize()">
@@ -47,6 +40,18 @@
                <p>Играй как в обычные крестики-нолики, только с клубникой и арбузами!</p><br>
                <p>Цель - набрать как можно больше побед!</p><br>
                <p><button class="custom-btn btn-3" id="goBtn" onclick="showOptions()"><span>ВПЕРЁД!</span></button></p>                                         
+            </div>            
+         </div>
+         <div id="addToMenu" class="modal" style="display: none;">            
+            <div class="modal-content">  
+               <h2>Добавьте игру в меню!</h2>                           
+               <p>Так Вы сможете быстрее вернуться к игре.</p><br>
+               <div style="display: flex; margin: auto; width: 300px;">
+                  <div class="restart"><button class="custom-btn btn-3" id="addToMenuBtn" onclick="addToMenu()"><span>ДОБАВИТЬ!</span></button></div>                                         
+                  <div class="restart"><button class="custom-btn btn-3" id="addToMenuBtn" onclick="closeModal( 'addToMenu' )"><span>ОТКАЗАТЬСЯ</span></button></div>  
+               </div>
+               <!-- <div><button class="custom-btn btn-3" id="addToMenuBtn" onclick="addToMenu()"><span>ДОБАВИТЬ!</span></button></div>                                         
+               <div><button class="custom-btn btn-3" id="addToMenuBtn" onclick="closeModal( 'addToMenu' )"><span>ОТКАЗАТЬСЯ</span></button></div>                                          -->
             </div>            
          </div>
          <div id="optionsDlg" class="modal">
