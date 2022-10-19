@@ -421,6 +421,16 @@ function endGame( who ) {
    if ( score.computer + score.draw + score.player === 1 ) {
       VK.callMethod("showSettingsBox", 256);
    }
+
+   vkAds();
+}
+
+function vkAds() {
+   vkBridge.send("VKWebAppCheckNativeAds", {"ad_format": "interstitial"});
+   vkBridge.send("VKWebAppShowNativeAds", {ad_format:"interstitial"})
+
+   .then(data => console.log(data.result))
+   .catch(error => console.log(error));
 }
 
 function announceWinner( text, isGif ) {

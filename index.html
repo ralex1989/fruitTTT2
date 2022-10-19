@@ -8,13 +8,14 @@
       <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
       <script language="javascript">
          VK.init({ apiId: 5087365 });
-         vkBridge.send('VKWebAppInit');
+        // vkBridge.send('VKWebAppInit');
+         vkBridge.send("VKWebAppInit", {});
 
-         vkBridge.send("VKWebAppCheckNativeAds", {"ad_format": "interstitial"});
+/*          vkBridge.send("VKWebAppCheckNativeAds", {"ad_format": "interstitial"});
          vkBridge.send("VKWebAppShowNativeAds", {ad_format:"interstitial"})
-         
+
          .then(data => console.log(data.result))
-         .catch(error => console.log(error));
+         .catch(error => console.log(error)); */
       </script>
    </head>
    <body onload="initialize()">
