@@ -21,8 +21,17 @@ function initialize() {
    for ( let i = 0; i <= myGrid.cells.length - 1; i++ ) {      
       myGrid.cells[ i ] = 0;
    }
-   setTimeout( showRules, 200 );
-   //setTimeout( showOptions, 200 );
+   setTimeout( checkCookies, 200 );      
+}
+
+function checkCookies() {
+   if ( document.cookie.indexOf( "user" ) === 0 ) {
+      setTimeout( showOptions, 200 );
+   }
+   else {
+      document.cookie = "user=John; max-age=1000000;";        
+      setTimeout( showRules, 200 );
+   }
 }
 
 function VK_showInviteBox() {
